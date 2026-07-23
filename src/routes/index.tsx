@@ -302,6 +302,7 @@ function Index() {
                 href={p.url}
                 target="_blank"
                 rel="noreferrer"
+                data-reveal
                 className="group grid gap-8 lg:grid-cols-12 lg:gap-12"
               >
                 <div
@@ -461,7 +462,7 @@ function Index() {
               </p>
             </div>
 
-            <div className="grid gap-px bg-border lg:col-span-8 sm:grid-cols-2">
+            <div data-reveal-group className="grid gap-px bg-border lg:col-span-8 sm:grid-cols-2">
               {interests.map((it) => (
                 <div
                   key={it.k}
