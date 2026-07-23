@@ -78,7 +78,6 @@ const interests = [
 function Index() {
   return (
     <div className="relative min-h-screen overflow-x-clip bg-background text-foreground">
-      <CustomCursor />
       <SiteAnimations />
       <SakuraField />
 
