@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SakuraField } from "@/components/SakuraField";
+import { CustomCursor } from "@/components/CustomCursor";
+import { SiteAnimations } from "@/components/SiteAnimations";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 import tokyoNight from "@/assets/tokyo-night.jpg";
 import codingHands from "@/assets/coding-hands.jpg";
@@ -77,7 +79,10 @@ const interests = [
 function Index() {
   return (
     <div className="relative min-h-screen overflow-x-clip bg-background text-foreground">
+      <CustomCursor />
+      <SiteAnimations />
       <SakuraField />
+
 
       {/* NAV */}
       <header className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
@@ -297,6 +302,7 @@ function Index() {
                 href={p.url}
                 target="_blank"
                 rel="noreferrer"
+                data-reveal
                 className="group grid gap-8 lg:grid-cols-12 lg:gap-12"
               >
                 <div
@@ -456,7 +462,7 @@ function Index() {
               </p>
             </div>
 
-            <div className="grid gap-px bg-border lg:col-span-8 sm:grid-cols-2">
+            <div data-reveal-group className="grid gap-px bg-border lg:col-span-8 sm:grid-cols-2">
               {interests.map((it) => (
                 <div
                   key={it.k}
