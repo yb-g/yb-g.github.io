@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SakuraField } from "@/components/SakuraField";
-import { CustomCursor } from "@/components/CustomCursor";
 import { SiteAnimations } from "@/components/SiteAnimations";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 import tokyoNight from "@/assets/tokyo-night.jpg";
