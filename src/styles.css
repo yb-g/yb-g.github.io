@@ -82,16 +82,6 @@
     background: var(--violet-deep);
     color: white;
   }
-  html.cursor-none-global,
-  html.cursor-none-global *,
-  html.cursor-none-global a,
-  html.cursor-none-global button,
-  html.cursor-none-global input,
-  html.cursor-none-global textarea,
-  html.cursor-none-global select,
-  html.cursor-none-global label {
-    cursor: none !important;
-  }
 }
 
 @utility font-display {
