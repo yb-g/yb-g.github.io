@@ -1,44 +1,26 @@
-name: 'Deploy Website'
+name: Deploy to Cloudflare
 
-# Trigger Configuration
 on:
   push:
-    branches: ['main']
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    branches:
+      - main
 
 jobs:
-  # Build Job
-  build:
-    name: 'Build'
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout Code'
-        uses: actions/checkout@v5
-      - name: 'Setup Node'
-        uses: actions/setup-node@v6
-        with:
-          node-version: '22'
-      - name: 'Build Website'
-        run: npm ci && npm run build
-      - name: 'Upload artifact'
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: ./doc
-  # Deploy Job
   deploy:
-    name: 'Deploy'
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - name: 'Deploy to GitHub Pages'
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - run: npx wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
