@@ -97,8 +97,8 @@ function Index() {
             ))}
           </nav>
           <a
-            href="mailto:gnv.vaibhav@gmail.com"
-            className="font-mono text-xs uppercase tracking-[0.25em] text-white"
+            href="#contact"
+            className="font-mono text-xs uppercase tracking-[0.25em] text-white md:hidden"
           >
             Contact ↗
           </a>
