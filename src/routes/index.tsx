@@ -5,6 +5,7 @@ import heroPortrait from "@/assets/hero-portrait.jpg";
 import tokyoNight from "@/assets/tokyo-night.jpg";
 import codingHands from "@/assets/coding-hands.jpg";
 import sakuraBranch from "@/assets/sakura-branch.jpg";
+import ipod from "@/assets/ipod.jpg"
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -424,7 +425,7 @@ function Index() {
 
             <div className="relative overflow-hidden rounded-sm bg-card">
               <img
-                src={codingHands}
+                src={ipod}
                 alt="Hands on keyboard"
                 loading="lazy"
                 className="h-full min-h-[400px] w-full object-cover opacity-80"
