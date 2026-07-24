@@ -217,8 +217,15 @@ export function SiteAnimations() {
     return () => {
       document.removeEventListener("click", onAnchorClick);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scroll", onProgress);
       revealObserver.disconnect();
       groupObserver.disconnect();
+      imageObserver.disconnect();
+      magneticHandlers.forEach(({ el, move, leave }) => {
+        el.removeEventListener("mousemove", move);
+        el.removeEventListener("mouseleave", leave);
+      });
+      progressBar.remove();
       window.clearTimeout(failsafe);
     };
   }, []);
