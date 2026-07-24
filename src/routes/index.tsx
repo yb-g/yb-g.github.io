@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SakuraField } from "@/components/SakuraField";
 import { SiteAnimations } from "@/components/SiteAnimations";
+import { PageLoader } from "@/components/PageLoader";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 import tokyoNight from "@/assets/tokyo-night.jpg";
 import codingHands from "@/assets/coding-hands.jpg";
@@ -79,8 +80,10 @@ const interests = [
 function Index() {
   return (
     <div className="relative min-h-screen overflow-x-clip bg-background text-foreground">
+      <PageLoader />
       <SiteAnimations />
       <SakuraField />
+
 
 
       {/* NAV */}
