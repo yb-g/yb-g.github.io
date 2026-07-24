@@ -149,6 +149,71 @@ export function SiteAnimations() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
+    // ---------- Magnetic hover (nav links, buttons, anchors in header) ----------
+    const magneticSelector = 'header a, a[href^="#"], a[href^="mailto"], button';
+    const magneticEls = Array.from(document.querySelectorAll<HTMLElement>(magneticSelector))
+      .filter((el) => !el.hasAttribute("data-no-magnetic"));
+    const magneticHandlers: Array<{ el: HTMLElement; move: (e: MouseEvent) => void; leave: () => void }> = [];
+    magneticEls.forEach((el) => {
+      el.style.transition = "transform 400ms cubic-bezier(.2,.8,.2,1)";
+      const move = (e: MouseEvent) => {
+        const rect = el.getBoundingClientRect();
+        const relX = e.clientX - (rect.left + rect.width / 2);
+        const relY = e.clientY - (rect.top + rect.height / 2);
+        const strength = 0.25;
+        el.style.transform = `translate3d(${relX * strength}px, ${relY * strength}px, 0)`;
+      };
+      const leave = () => {
+        el.style.transform = "translate3d(0,0,0)";
+      };
+      el.addEventListener("mousemove", move);
+      el.addEventListener("mouseleave", leave);
+      magneticHandlers.push({ el, move, leave });
+    });
+
+    // ---------- Image scale reveal (magazine-style) ----------
+    const imageWrappers = Array.from(document.querySelectorAll<HTMLElement>("[data-image-reveal]"));
+    imageWrappers.forEach((wrap) => {
+      wrap.style.overflow = "hidden";
+      const img = wrap.querySelector("img");
+      if (img) {
+        (img as HTMLElement).style.transform = "scale(1.2)";
+        (img as HTMLElement).style.transition = "transform 1400ms cubic-bezier(.2,.8,.2,1)";
+      }
+      wrap.style.clipPath = "inset(100% 0 0 0)";
+      wrap.style.transition = "clip-path 1200ms cubic-bezier(.7,0,.2,1)";
+    });
+    const imageObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const wrap = entry.target as HTMLElement;
+          wrap.style.clipPath = "inset(0% 0 0 0)";
+          const img = wrap.querySelector("img") as HTMLElement | null;
+          if (img) img.style.transform = "scale(1)";
+          imageObserver.unobserve(wrap);
+        });
+      },
+      { threshold: 0.15 },
+    );
+    imageWrappers.forEach((el) => imageObserver.observe(el));
+
+    // ---------- Scroll progress bar ----------
+    const progressBar = document.createElement("div");
+    progressBar.setAttribute("aria-hidden", "true");
+    progressBar.style.cssText =
+      "position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left center;transform:scaleX(0);background:hsl(var(--primary, 260 80% 60%));z-index:60;pointer-events:none;transition:transform 120ms linear;";
+    // Fallback to token if the CSS var is not HSL-format
+    progressBar.style.background = "var(--primary)";
+    document.body.appendChild(progressBar);
+    const onProgress = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const p = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+      progressBar.style.transform = `scaleX(${p})`;
+    };
+    window.addEventListener("scroll", onProgress, { passive: true });
+    onProgress();
+
     return () => {
       document.removeEventListener("click", onAnchorClick);
       window.removeEventListener("scroll", onScroll);
