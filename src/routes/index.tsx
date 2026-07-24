@@ -41,7 +41,7 @@ const projects = [
     n: "01",
     name: "Zoomageddon",
     tag: "Award-winning · Real-time",
-    desc: "Award-winning collaborative web application built around real-time interaction. Multiplayer, chaotic, unexpectedly deep.",
+    desc: "A now award-winning, chaotic desktop prank application that records audio, takes screenshots, plays random sounds, and opens random websites while you're browsing. Created for Hack Club Scrapyard Hackathon 2025",
     stack: ["Web", "Realtime", "Collab"],
     url: "https://github.com/codered-scrapyard25/zoomageddon",
     cover: tokyoNight,
@@ -50,7 +50,7 @@ const projects = [
     n: "02",
     name: "FocusFi",
     tag: "Productivity · Minimal",
-    desc: "A minimalist productivity web app for organizing work and holding attention. Fewer surfaces, sharper focus.",
+    desc: "A minimal, dark-themed focus workspace that plays lofi livestreams and ambient sounds while you study. Built with HTML5, CSS3, and vanilla ES6 JavaScript. No build step, no frameworks.",
     stack: ["Web", "UI", "Focus"],
     url: "https://github.com/yb-g-personal/focusfi",
     cover: codingHands,
@@ -59,7 +59,7 @@ const projects = [
     n: "03",
     name: "CrowdPlay",
     tag: "Full-stack · Interactive",
-    desc: "Web-based project demonstrating full-stack development and interactive UX patterns end-to-end.",
+    desc: "CrowdPlay connects DJs and their audience in real time. Fans request songs, upvote favorites, and watch the queue update live. No app download needed.",
     stack: ["Full-stack", "Web"],
     url: "https://github.com/crowdplay-app",
     cover: sakuraBranch,
@@ -86,7 +86,7 @@ function Index() {
       <header className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-6 md:px-12">
           <a href="#top" className="font-mono text-xs tracking-[0.3em] uppercase text-white">
-            VG · <span className="font-jp">岩</span>
+            YB · <span className="font-jp">岩</span>
           </a>
           <nav className="hidden gap-8 md:flex">
             {["Work", "About", "Skills", "Contact"].map((l) => (
@@ -149,8 +149,8 @@ function Index() {
             <div className="mt-10 grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
               <p className="max-w-xl text-lg leading-relaxed text-white/70">
                 Computer science student. Software engineer in the making. Building
-                practical things at the intersection of code, systems, and taste —
-                aiming west from the terminal toward{" "}
+                practical things at the intersection of code, systems, and taste.
+                Aiming west from the terminal toward{" "}
                 <span className="font-jp text-white">日本</span>.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -249,13 +249,13 @@ function Index() {
             <div className="mt-16 grid gap-12 md:grid-cols-2">
               <p className="text-lg leading-relaxed text-foreground/80">
                 I study computer science with a bias toward things that actually run.
-                Software development, open source, self-hosted systems — I like the
+                Software development, open source, self-hosted systems. I like the
                 stack all the way down. Practical, efficient solutions over clever ones.
               </p>
               <p className="text-lg leading-relaxed text-foreground/80">
                 The long arc: a role at a multinational technology company and an
                 international career, most likely rooted in Japan. Until then, I ship,
-                learn, and rip FLACs from CDs in the background.
+                learn, and rip FLACs from CDs in the background ;)
               </p>
             </div>
 
@@ -435,7 +435,7 @@ function Index() {
                   Approach
                 </div>
                 <p className="mt-3 font-display text-2xl italic leading-tight text-foreground">
-                  "Ship the practical thing. Then make it fast."
+                  "From Curiosity to Creation."
                 </p>
               </div>
             </div>
